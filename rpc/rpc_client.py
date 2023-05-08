@@ -1,5 +1,4 @@
 # client
-
 import rpyc
 
 if __name__ == "__main__":
