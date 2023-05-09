@@ -9,12 +9,14 @@ try:
     from concurrent import futures
 except ImportError:
     import futures
-    
+
+
 class Server(server_pb2_grpc.ServerServicer):
     # 实现proto中的handle方法
     def handler(self, request, context):
         # 获取request消息中的name字段，并返回reply类型的消息给客户端
         return server_pb2.reply(message=f"Hello, {request.name}!")
+
 
 if __name__ == "__main__":
     # 获取server
