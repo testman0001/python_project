@@ -1,0 +1,15 @@
+//pip install grpcio-tools
+syntax = "proto3";
+package example;
+
+service Server {
+    rpc handler (request) returns  (reply) {}
+}
+
+message request {
+    string name = 1;
+}
+
+message reply {
+    string message = 1;
+}
