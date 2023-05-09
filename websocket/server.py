@@ -1,11 +1,13 @@
 # 基于官方示例
 # https://github.com/crossbario/autobahn-python
 try:
-      import asyncio
+    import asyncio
 except ImportError:
-      ## Trollius >= 0.3 was renamed
-      import trollius as asyncio
-from autobahn.asyncio.websocket import WebSocketServerProtocol,WebSocketServerFactory
+    # Trollius >= 0.3 was renamed
+    import trollius as asyncio
+from autobahn.asyncio.websocket import WebSocketServerProtocol
+from autobahn.asyncio.websocket import WebSocketServerFactory
+
 
 class MyServerProtocol(WebSocketServerProtocol):
 
@@ -21,11 +23,12 @@ class MyServerProtocol(WebSocketServerProtocol):
         else:
             print("Text message received: {}".format(payload.decode('utf8')))
 
-        ## echo back message verbatim
+        # echo back message verbatim
         self.sendMessage(payload, isBinary)
 
     def onClose(self, wasClean, code, reason):
         print("WebSocket connection closed: {}".format(reason))
+
 
 class Server(object):
     def __init__(self, ip='127.0.0.1' , port=58000) -> None:
@@ -48,6 +51,7 @@ class Server(object):
         finally:
             self.server.close()
             self.event_loop.close()
+
 
 if __name__ == '__main__':
     ser = Server()

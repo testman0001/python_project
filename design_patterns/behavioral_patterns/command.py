@@ -14,6 +14,7 @@ class Thermostat(Receiver):
         print("Temperature lowered by {0} degrees".format(amount))
         return "Temperature lowered by {0} degrees".format(amount)
 
+
 # “命令”对象
 class RaiseTempCommand(Command):
 
@@ -27,11 +28,11 @@ class RaiseTempCommand(Command):
         return self._receiver.action('raise_temp', self.amount) 
 
     def unexecute(self): 
-        return self._receiver.action('lower_temp', self.amount) 
-                                                     
+        return self._receiver.action('lower_temp', self.amount)
+
 
 class LowerTempCommand(Command): 
- 
+
     def __init__(self, receiver, amount=5):
         super().__init__(receiver)
         self.amount = amount
@@ -41,6 +42,7 @@ class LowerTempCommand(Command):
 
     def unexecute(self):
         return self._receiver.action('raise_temp', self.amount) 
+
 
 # 提供execute、undo（即执行上一个传进来的命令对象的unexecute方法）两个接口
 class Worker(Invoker): 

@@ -11,7 +11,7 @@ class FlaskServer(object):
         self.ip = ip
         self.port = port
         self.role = 'slave'
-    
+
     def _route_func_init(self):
         @self.app.route('/role', methods=['GET'])
         def get_role():
@@ -20,10 +20,10 @@ class FlaskServer(object):
 
     def run(self):
         self.app.run(self.ip, self.port)
-    
+
     def stop(self):
         self.app.stop()
-    
+
 
 if __name__ == '__main__':
     server = FlaskServer()

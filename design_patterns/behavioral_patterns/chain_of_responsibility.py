@@ -30,6 +30,7 @@ class ConcreteChainLinkOne(ChainLink):
             # 处理不了给下一个“接班人”
             return self.successor_handle(request)
 
+
 class ConcreteChain(Chain): 
 
     def __init__(self): 
